@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Services\BlockchainAPI\BlockchainAPIService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function (Request $request) {
-    return 'test';
-});
+Route::resource('rates', 'TickerAPIController')
+    ->only(['index']);
+
+Route::resource('convert', 'OrderAPIController')
+    ->only(['store']);
