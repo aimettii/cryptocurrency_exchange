@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use Illuminate\Container\Container as Application;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -64,14 +62,14 @@ abstract class BaseRepository
     /**
      * Build a query for retrieving all records.
      */
-    public function allQuery(array $search = [], int $skip = null, int $limit = null): Builder
+    public function allQuery(array $search = [], int $skip = null, int $limit = null)
     {
         $query = $this->model->newQuery();
 
         if (count($search)) {
             foreach($search as $key => $value) {
                 if (in_array($key, $this->getFieldsSearchable())) {
-                    $query->where($key, $value);
+                    $query->where($query->qualifyColumn($key), $value);
                 }
             }
         }
