@@ -211,7 +211,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Blockchain' => \App\Facades\Blockchain::class,
+        'Coingecko' => \App\Facades\Coingecko::class,
     ])->toArray(),
 
 ];
