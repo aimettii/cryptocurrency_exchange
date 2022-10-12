@@ -39,6 +39,7 @@ SQL запрос:
             select COUNT(DISTINCT books.author) from books
             INNER JOIN user_books on user_books.book_id = books.id
             WHERE user_books.user_id = users.id
-        ) as author_count FROM `users` 
+        ) as author_count FROM `users`
+WHERE `age` BETWEEN 5 AND 19
 HAVING books_count = 2 AND author_count = 1`
 
